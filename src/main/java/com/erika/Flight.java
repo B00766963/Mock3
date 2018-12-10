@@ -11,7 +11,7 @@ class Flight
     private String departureAirport;
     private String arrivalAirport;
 
-    Flight(Long id, Time departureTime, Time arrivalTime, String departureAirport, String arrivalAirport)
+    Flight(Long id, Time departureTime, String departureAirport, Time arrivalTime,  String arrivalAirport)
     {
         this.id = id;
         this.departureTime = departureTime;

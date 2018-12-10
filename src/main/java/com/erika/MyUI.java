@@ -33,7 +33,7 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
         Label logo = new Label("<H1>Feckin Flyers</H1> <p/> <h2>Termonfeckin's <strong>fifth</strong> best airline</h2><br>", ContentMode.HTML);
         // Database connection string
-        String connectionString = "Server=tcp:erikamock3server.database.windows.net,1433;Initial Catalog=ErikaMock3DB;Persist Security Info=False;User ID=SUPERUSER;Password=Mockexams3;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+        String connectionString = "jdbc:sqlserver://erikamock3server.database.windows.net:1433;database=ErikaMock3DB;user=SUPERUSER@erikamock3server;password=Mockexams3;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30";
         try
         {
             // Connect and query the data
@@ -44,10 +44,10 @@ public class MyUI extends UI {
             while(rs.next())
             {
                 flights.add(new Flight(rs.getLong("id"), 
-                                       rs.getTime("departureTime"), 
-                                       rs.getTime("arrivalTime"),
-                                       rs.getString("departureAirport"),
-                                       rs.getString("arrivalAirport")));
+                                       rs.getTime("depart"), 
+                                       rs.getString("terminal"),
+                                       rs.getTime("arrive"),
+                                       rs.getString("destination")));
             }
             // Create my grid
             Grid<Flight> grid = new Grid<>();
